@@ -1,0 +1,6 @@
+{
+  "name": "Nisar AI Studio",
+  "description": "An autonomous AI business ecosystem and creative hub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
