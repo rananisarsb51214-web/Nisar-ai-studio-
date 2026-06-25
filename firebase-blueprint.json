@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "project": {
+      "title": "Project Memory",
+      "description": "Saves code generator and converter history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "prompt": { "type": "string" },
+        "code": { "type": "string" },
+        "tab": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "prompt", "code", "tab"]
+    },
+    "chatMessage": {
+      "title": "AI Chat Message",
+      "description": "Messages sent inside the AI Chat Assistant",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sender": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "provider": { "type": "string" }
+      },
+      "required": ["sender", "message", "provider"]
+    },
+    "automationRule": {
+      "title": "Automation Rule",
+      "description": "Configurations for the master automation sync pipelines",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sourceSystem": { "type": "string" },
+        "targetSystem": { "type": "string" },
+        "frequency": { "type": "string" },
+        "bidirectional": { "type": "boolean" },
+        "duplicateStrategy": { "type": "string" },
+        "validationRules": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "sourceSystem", "targetSystem", "frequency", "duplicateStrategy"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "project",
+      "description": "Collection of saved project memory"
+    },
+    "/chat_messages/{messageId}": {
+      "schema": "chatMessage",
+      "description": "Collection of chat assistant history"
+    },
+    "/automation_rules/{ruleId}": {
+      "schema": "automationRule",
+      "description": "Collection of master automation pipeline configurations"
+    }
+  }
+}
